@@ -3,12 +3,13 @@ module StwEngine
 
   # modes
   MODES = %w{production placehold dummy}
-  API_URL = 'http://beta.url2png.com'
+  IMAGE_URL = 'http://images.shrinktheweb.com/xino.php?'
+  ACCOUNT_URL = 'http://images.shrinktheweb.com/account.php?'
 
   def config c = {}
     # mandatory
     self.api_key = c[:api_key]
-    self.private_key = c[:private_key]
+    self.api_secret = c[:api_secret]
 
     # optional
     self.mode = c[:mode] if c[:mode]
@@ -21,21 +22,21 @@ module StwEngine
   end
 
   def api_key
-    raise 'Url2png error: No public key defined!' if @api_key.nil?
+    raise 'StwEngine error: No api_key defined!' if @api_key.nil?
     @api_key
   end
 
-  def private_key=private_key
-    @private_key = private_key
+  def api_secret=api_secret
+    @api_secret = api_secret
   end
 
-  def private_key
-    raise 'Url2png error: No private key defined!' if @private_key.nil?
-    @private_key
+  def api_secret
+    raise 'StwEngine error: No api secret defined!' if @api_secret.nil?
+    @api_secret
   end
 
   def mode=mode
-    raise "Url2png error: Invalid mode, only #{ MODES.join(', ') } are allowed" unless MODES.include?(mode.to_s)
+    raise "StwEngine error: Invalid mode, only #{ MODES.join(', ') } are allowed" unless MODES.include?(mode.to_s)
     @mode = mode.to_s
   end
 
@@ -51,15 +52,25 @@ module StwEngine
     @api_version || 'v6' #default: v6
   end
 
-  def api_url=api_url
-    @api_url = api_url || API_URL
+  def image_url=image_url
+    @image_url = image_url || IMAGE_URL
   end
 
-  def api_url
+  def image_url
     # reference => http://url2png.com/docs/
     # currently all versions suggest 'beta'
-    @api_url || API_URL
+    @image_url || IMAGE_URL
   end
+  
+   def account_url
+    @account_url = ACCOUNT_URL
+  end
+  
+   def account_url=account_url
+    @account_url = ACCOUNT_URL
+  end
+
+
 
   def default_size=default_size
     @default_size = default_size || "400x400"
