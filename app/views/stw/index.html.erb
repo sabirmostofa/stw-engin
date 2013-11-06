@@ -1,2 +1,9 @@
 <h1>Stw#index</h1>
 <p>Find me in app/views/stw/index.html.erb</p>
+<table>
+<%= stw_show_info.each do |key, value| %>
+  <tr>
+    <td><%= key %></td><td><%= value %></td>
+  </tr>
+  <% end %>
+ </table>
