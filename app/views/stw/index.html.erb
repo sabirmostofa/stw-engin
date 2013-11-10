@@ -1,9 +1,13 @@
-<h1>Stw#index</h1>
-<p>Find me in app/views/stw/index.html.erb</p>
+<%= stylesheet_link_tag "stw" %>
+<div style="width:350px;margin: 30px auto">
+<h1>Stw Account Details</h1>
+
 <table>
-<%= stw_show_info.each do |key, value| %>
+<% stw_show_info.each do |key, value| %>
   <tr>
     <td><%= key %></td><td><%= value %></td>
   </tr>
   <% end %>
  </table>
+ 
+ </div>
