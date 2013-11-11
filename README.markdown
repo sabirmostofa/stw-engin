@@ -31,6 +31,14 @@ You must define your Access key or secret key, they are required:
 
 
 	})
+	
+
+mount the gem in your apps routes.rb file using
+
+	mount StwEngine::Engine => "/stw_engine"
+	
+Then you'll be able to access the account info at
+	http://yourwebsite.com/stw
 
 
 
