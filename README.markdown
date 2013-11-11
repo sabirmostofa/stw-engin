@@ -1,7 +1,7 @@
 # stw_engine gem
 
 ## What is it?
-A Ruby gem wrapping the shrinktheweb.com API.
+A Ruby gem wrapping the http://shrinktheweb.com API.
 
 ## Who should use it?
 Any Ruby on Rails developer who wants/needs to generate screenshots from sites using shrinktheweb.com.
@@ -38,7 +38,7 @@ mount the gem in your apps routes.rb file using
 	mount StwEngine::Engine => "/stw_engine"
 	
 Then you'll be able to access the account info at
-	http://yourwebsite.com/stw
+	 yourwebsite.com/stw
 
 
 
