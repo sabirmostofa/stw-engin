@@ -11,7 +11,7 @@ Any Ruby on Rails developer who wants/needs to generate screenshots from sites u
 
 	gem install nokogiri
 	
-    gem install stw_gem
+    gem install stw_engine
     
     
 
@@ -38,9 +38,12 @@ You must define your Access key or secret key, they are required:
 The following sizes are available depending on the account level
 
 
-* v6 (default)
-* v4
-* v3
+* xlg
+* lg
+* sm
+* vcm
+* tny
+* mcr
 
 
 
@@ -61,9 +64,9 @@ Generate an image tag with size option:
     
 
 
-To only get the image url:
+To only get the image url with lg size:
 
-    stw_show_url url, [options]
+    stw_show_url url, :size => 'lg'
     
 
 
