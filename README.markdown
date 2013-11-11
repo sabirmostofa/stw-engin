@@ -1,0 +1,75 @@
+# stw_engine gem
+
+## What is it?
+A Ruby gem wrapping the shrinktheweb.com API.
+
+## Who should use it?
+Any Ruby on Rails developer who wants/needs to generate screenshots from sites using shrinktheweb.com.
+
+
+## Installation
+
+	gem install nokogiri
+	
+    gem install stw_gem
+    
+    
+
+
+### Configuration
+
+You must define your Access key or secret key, they are required:
+
+ StwEngine.config({
+
+    # required
+    :api_key      => 'xXXXXXXXXXXXXX',
+    :private_key  => 'xxxx,
+
+    #optional use if supported
+    :size  => 'lg',
+
+
+})
+
+
+
+##### size
+The following sizes are available depending on the account level
+
+
+* v6 (default)
+* v4
+* v3
+
+
+
+
+##### mode
+
+
+## Usage
+
+
+Generate an image tag:
+
+    stw_show url
+
+Generate an image tag with size option:
+
+	stw_show url, :size => 'xlg'
+    
+
+
+To only get the image url:
+
+    stw_show_url url, [options]
+    
+
+
+
+
+
+
+
+

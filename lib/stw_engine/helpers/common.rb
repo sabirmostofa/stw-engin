@@ -51,14 +51,14 @@ module StwEngine
 		
 	end
 
-    # function to store the image and return the image url
-	def stw_show url, options ={}
-		sizes = ['xlg', 'lg', 'sm', 'vsm', 'tny', 'mcr']
-		params = {:stwaccesskeyid => StwEngine.api_key , 
-		:stwu => StwEngine.api_secret}
-		
-		if options.key?(:size)
-			case options[:size]
+	#function to return only url 
+	
+	def stw_show_url url, options={}
+		stw_show url, options, only_url=true
+	end
+	
+	def add_size size, params
+			case size
 				when 'xlg'
 					params['stwxmax'] = 320
 				when 'lg'
@@ -73,7 +73,24 @@ module StwEngine
 					params['stwxmax'] = 75
 		
 			end
+		return params
+	end
+	
+    # function to store the image and return the image url
+	def stw_show url, options ={}, only_url=false
+		sizes = ['xlg', 'lg', 'sm', 'vsm', 'tny', 'mcr']
+		params = {:stwaccesskeyid => StwEngine.api_key , 
+		:stwu => StwEngine.api_secret}
+		
+		if StwEngine.size
+			params = add_size StwEngine.size, params
 		end
+		
+		if options.key?(:size)
+			params = add_size options[:size], params
+
+		end
+		#return params
 		params[:stwurl] = url 
 		
 		
@@ -128,6 +145,11 @@ module StwEngine
 		
 		open(path, 'wb') do |file|
 			file << open(image).read
+		end
+		img_path = "/stw/#{filename}"
+		
+		if only_url
+			return img_path
 		end
 		
 		img = "<img src=\"/stw/#{filename}\"/>"

@@ -12,9 +12,8 @@ module StwEngine
     self.api_secret = c[:api_secret]
 
     # optional
-    self.mode = c[:mode] if c[:mode]
-    self.api_version = c[:api_version] if c[:api_version]
-    self.api_url = c[:api_url] if c[:api_url]
+    self.size = c[:size] if c[:size]
+    
   end
 
   def api_key=api_key
@@ -33,6 +32,14 @@ module StwEngine
   def api_secret
     raise 'StwEngine error: No api secret defined!' if @api_secret.nil?
     @api_secret
+  end
+  
+  def size=size
+    @size = size
+  end
+
+  def size    
+    @size
   end
 
   def mode=mode
