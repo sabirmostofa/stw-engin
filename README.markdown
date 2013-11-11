@@ -20,17 +20,17 @@ Any Ruby on Rails developer who wants/needs to generate screenshots from sites u
 
 You must define your Access key or secret key, they are required:
 
- StwEngine.config({
+	StwEngine.config({
 
-    # required
-    :api_key      => 'xXXXXXXXXXXXXX',
-    :private_key  => 'xxxx,
+		# required
+		:api_key      => 'xXXXXXXXXXXXXX',
+		:private_key  => 'xxxx,
 
-    #optional use if supported
-    :size  => 'lg',
+		#optional use if supported
+		:size  => 'lg',
 
 
-})
+	})
 
 
 
