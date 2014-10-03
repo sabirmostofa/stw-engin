@@ -1,3 +1,5 @@
 class Post < ActiveRecord::Base
-  attr_accessible :text, :title
+  unless Rails::VERSION::MAJOR >= 4
+    attr_accessible :text, :title
+  end
 end
